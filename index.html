@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Eman 💖</title>
+  <style>
+    /* 🌸 General Styles */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffd6ec, #ffeaf4);
+      overflow-x: hidden;
+      overflow-y: auto;
+      color: #5a2a5a;
+      min-height: 100vh;
+    }
+
+    section {
+      display: none;
+      height: 100vh;
+      padding: 60px 20px;
+      transition: opacity 1s ease;
+      opacity: 0;
+      background: linear-gradient(135deg, #ffd6ec, #ffeaf4);
+      position: relative;
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 2.4rem;
+      margin-top: 60px;
+    }
+
+    p {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    /* 💖 Buttons */
+    .next-btn {
+      margin-top: 25px;
+      padding: 14px 40px;
+      border-radius: 36px;
+      border: none;
+      background: linear-gradient(90deg, #ff66a3, #ff99cc);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(255, 105, 180, 0.25);
+      transition: transform 0.12s ease, box-shadow 0.2s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    .next-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(255, 105, 180, 0.35);
+    }
+
+    .next-btn:active {
+      transform: scale(0.96);
+      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+    }
+
+    /* 💕 Floating Emojis */
+    #floating-emojis {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 0;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 28px;
+      animation: emojiFloat linear;
+      animation-iteration-count: 1;
+      opacity: 0.9;
+    }
+
+    @keyframes emojiFloat {
+      0% { transform: translateY(110vh); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-15vh); opacity: 0; }
+    }
+
+    
+    /* 🎂 Cake */
+    #cake {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 40px auto;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .plate {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 260px;
+      height: 20px;
+      background: #ffd0df;
+      border-radius: 30px;
+      box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.6);
+    }
+
+    .layer-bottom {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 80px;
+      background: linear-gradient(#ff6fa5, #ff3385);
+      border-radius: 20px;
+      box-shadow: inset 0 -10px 0 #ff4d94;
+    }
+
+    .layer-middle {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 60px;
+      background: linear-gradient(#ffb6c1, #ff6699);
+      border-radius: 20px;
+      box-shadow: inset 0 -8px 0 #ff80ab;
+    }
+
+    .layer-top {
+      position: absolute;
+      bottom: 160px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 40px;
+      background: linear-gradient(#ffe4ec, #ffb3d9);
+      border-radius: 20px;
+      box-shadow: inset 0 -6px 0 #ff99c2;
+    }
+
+    .candle {
+      position: absolute;
+      top: -50px;
+      left: calc(50% - 8px);
+      width: 16px;
+      height: 60px;
+      background: repeating-linear-gradient(45deg, #fff, #fff 6px, #ffd6ec 6px, #ffd6ec 12px);
+      border-radius: 5px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .flame {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffdf4a 30%, #ff7a00 70%);
+      box-shadow: 0 0 20px 6px rgba(255, 180, 0, 0.6);
+      animation: flicker 0.25s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 1; }
+      to { transform: translateX(-50%) scale(1.15); opacity: 0.9; }
+    }
+
+    .smoke {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: transparent;
+      opacity: 0;
+    }
+
+    @keyframes smokeRise {
+      0% {opacity:1;transform:translateY(0) scale(0.6);}
+      100% {opacity:0;transform:translateY(-80px) scale(1.6);}
+    }
+    /* 🎉 Confetti Party Pops */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 14px;
+  pointer-events: none;
+  opacity: 1;
+  transform-origin: center;
+  border-radius: 2px;
+  z-index: 999;
+}
+@keyframes confettiFly {
+  0% { transform: translate(0,0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); opacity: 0; }
+}
+/* 🎀 Hanging 19 Cards with Glow + Floating Animation */
+.hanging-cards {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 150;
+}
+
+.hanging-cards .card {
+  width: 80px;
+  height: 100px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 92, 161, 0.5);
+  font-size: 60px;
+  font-weight: bold;
+  color: #ff5ca1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-origin: top center;
+  animation:
+    swing 2.5s ease-in-out infinite alternate,
+    glowPulse 2s ease-in-out infinite,
+    float 5s ease-in-out infinite alternate;
+}
+
+/* 🧵 Hanging string */
+.hanging-cards .card::before {
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  width: 2px;
+  height: 35px;
+  background: #aaa;
+  transform: translateX(-50%);
+}
+
+/* 🌸 Swing animation */
+@keyframes swing {
+  0% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+
+/* 💖 Glow pulse animation */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px rgba(255, 92, 161, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(255, 92, 161, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(255, 92, 161, 0.4); }
+}
+
+/* 🎈 Floating and gentle rotation animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+}
+/* 🌈 Soft gradient background for all pages */
+body {
+  background: linear-gradient(135deg, #ffe6f2, #fff0f5, #fef5ff);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ✨ Light sparkles floating gently */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255,255,255,0.9), transparent);
+  border-radius: 50%;
+  animation: sparkleMove 8s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes sparkleMove {
+  0% {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ❤️ Romantic Gradient Background */
+body {
+  background: linear-gradient(135deg, #ff9a9e 0%, #ff5f6d 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🌸 Corner Flowers - arranged in triangle shape */
+.corner-flowers {
+  position: fixed;
+  top: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.left-flowers {
+  left: 10px;
+  transform: rotate(-25deg);
+}
+
+.right-flowers {
+  right: 10px;
+  transform: rotate(25deg);
+}
+
+/* create triangle layout */
+.corner-flowers span:nth-child(1) {
+  transform: translateX(0px);
+  font-size: 32px;
+}
+
+.corner-flowers span:nth-child(2) {
+  transform: translateX(10px);
+  margin-top: -8px;
+  font-size: 28px;
+}
+
+.corner-flowers span:nth-child(3) {
+  transform: translateX(20px);
+  margin-top: -8px;
+  font-size: 24px;
+}
+
+.corner-flowers span {
+  animation: floatFlower 4s ease-in-out infinite;
+}
+
+@keyframes floatFlower {
+  0% { transform: translateY(0px) scale(1) rotate(0deg); }
+  50% { transform: translateY(-6px) scale(1.1) rotate(5deg); }
+  100% { transform: translateY(0px) scale(1) rotate(0deg); }
+}
+
+
+/* ✨ Sparkle Background */
+#sparkle-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* keeps it behind everything */
+  pointer-events: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: radial-gradient(circle at center, #ffb6c1 10%, #ff4d6d 40%, #ff99cc 100%);
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #ff0000, #ff4d6d, transparent);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: sparkleBlink 2.5s infinite ease-in-out;
+}
+
+@keyframes sparkleBlink {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+
+  </style>
+</head>
+<body>
+  <audio id="bg-music" loop>
+    <source src="music/romantic.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div id="floating-emojis"></div>
+
+  <!-- PAGE 1 -->
+  <section id="page1" class="active">
+    <h1>🎂 Happy Birthday, Eman 💖</h1>
+    <p>My dearest Eman,
+On this beautiful day, I just want to pause and thank God for blessing the world with someone as extraordinary as you. You are the light that brightens every corner of my heart, the calm in all my storms, and the most precious part of my life.
+
+Every day with you feels like a new chapter of love, laughter, and endless warmth. Your smile gives me peace, your kindness inspires me, and your love makes me feel complete in ways I never thought possible. You’ve taught me what true love really means — not just in words, but in the way you care, understand, and stand by me through everything.
+
+Eman, you’re not only my fiancée — you’re my best friend, my safe place, and my forever. I promise to keep cherishing you, respecting you, and loving you more with each passing day. I can’t wait for all the birthdays we’ll celebrate together, all the memories we’ll create, and the beautiful life we’ll build side by side.
+
+May this year bring you endless happiness, success, and peace — and may your heart always feel as loved and special as you truly are to me. 💞
+
+Happy Birthday, my queen. You are, and always will be, my greatest blessing.
+
+With all my heart,
+Your forever, Abdullah 💍✨. Click anywhere to start the song 💕</p>
+    <br />
+    <button class="next-btn" onclick="nextPage('page2')">Continue →</button>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section id="page2">
+    <h1>💫 My Dearest Eman 💫</h1>
+    <p>I just want to take a moment to remind you how truly special you are, my love 💖. You have such a beautiful light inside you — one that brightens not only my world, but everyone lucky enough to know you 🌞. Your kindness, your strength, your heart, and your endless positivity make you shine in ways words can barely describe ✨.
+
+Eman, may your path always be filled with success, peace, and happiness 🌷. May you keep chasing your dreams fearlessly 🌈, and may everything you work for bloom beautifully in your life 🌺. Never let anyone or anything dim your sparkle — because you were born to shine brightly, just like the stars you love to look at 🌙💫.
+
+Always remember, I’ll be right here cheering for you, supporting you, and celebrating every victory, big or small 🥰. The world is a better place because of your light — so keep glowing, keep smiling, and keep being you 💎.
+
+I’m endlessly proud of you and so lucky to call you mine 💍❤️.
+Keep shining, my brightest star ⭐💖</p>
+    <br />
+    <button class="next-btn" onclick="nextPage('page3')">Next →</button>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section id="page3">
+    <h1>💞 My Eman, My Forever 💞</h1>
+    <p>I just want you to know, from the deepest part of my heart, that no matter what happens, no matter where life takes us, I will always be with you — today, tomorrow, and every day after that ❤️.
+
+Through every high and every low, through every smile and every tear, I’ll be right by your side 🤝. You will never have to face anything alone, because my heart walks with you in every step you take 💫.
+
+Eman, you are my peace, my strength, and my reason to keep going 🌹. I promise to hold your hand when you’re scared, to lift you up when you feel weak, and to celebrate with you when life blesses you with joy 🎉. No distance, no time, no challenge will ever change the way I feel about you — because my love for you doesn’t depend on circumstances; it’s forever 🌙.
+
+I will be your safe place when the world feels heavy 🕊️, your biggest supporter when you chase your dreams 🌈, and your calm in every storm 🌧️. When you fall, I’ll be there to catch you; when you shine, I’ll be there to cheer the loudest 🌟.
+
+So never doubt it for a second — you’ll never be alone, Eman. I’m here, always and forever, walking beside you, loving you endlessly, and holding you close no matter how far we are 💖.</p>
+    <br />
+    <button class="next-btn" onclick="nextPage('page4')">Final Surprise →</button>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section id="page4">
+    <!-- 🎀 Hanging 19 Cards -->
+<div class="hanging-cards" id="ageCards">
+  <div class="card">1</div>
+  <div class="card">9</div>
+</div>
+    <div class="corner-balloons left" id="leftBalloons"></div>
+    <div class="corner-balloons right" id="rightBalloons"></div>
+
+
+    <h1>🎉 Blow the Candle 🎂</h1>
+    <p>Click anywhere to blow the candle and make your wish 💖</p>
+
+    <div id="cake">
+      <div class="plate"></div>
+      <div class="layer-bottom"></div>
+      <div class="layer-middle"></div>
+      <div class="layer-top"></div>
+      <div class="candle">
+        <div id="flame" class="flame"></div>
+        <div id="smoke" class="smoke"></div>
+      </div>
+    </div>
+
+    <button class="next-btn" onclick="nextPage('page1')">Back to Start</button>
+  </section>
+<!-- 🌸 Top Corner Flowers -->
+<div class="corner-flowers left-flowers">
+  <span>🌸</span>
+  <span>🌸</span>
+  <span>🌸</span>
+</div>
+
+<div class="corner-flowers right-flowers">
+  <span>🌸</span>
+  <span>🌸</span>
+  <span>🌸</span>
+</div>
+
+<!-- ✨ Red Sparkles -->
+<div id="sparkle-container"></div>
+
+  <script>
+/* 🎵 Start background music on first click */
+window.addEventListener("click", function startMusic() {
+  const audio = document.getElementById("bg-music");
+  if (audio && audio.paused) audio.play().catch(() => {});
+  window.removeEventListener("click", startMusic);
+});
+
+/* 📄 Page navigation logic */
+function nextPage(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  const el = document.getElementById(id);
+  if (el) el.classList.add("active");
+  if (id === "page4") addCornerBalloons();
+}
+
+/* 🎈 Red Balloons (stay at page4 corners) */
+function addCornerBalloons() {
+  const left = document.getElementById("leftBalloons");
+  const right = document.getElementById("rightBalloons");
+  if (!left || !right) return;
+  left.innerHTML = "";
+  right.innerHTML = "";
+  for (let i = 0; i < 3; i++) {
+    const b1 = document.createElement("div");
+    const b2 = document.createElement("div");
+    b1.className = "balloon";
+    b2.className = "balloon";
+    b1.style.animationDelay = `${i * 0.3}s`;
+    b2.style.animationDelay = `${i * 0.3}s`;
+    left.appendChild(b1);
+    right.appendChild(b2);
+  }
+}
+
+
+// ❤️ Floating emojis — from full bottom to top
+document.addEventListener("DOMContentLoaded", function() {
+  // Create floating emoji container
+  let container = document.createElement("div");
+  container.id = "floating-emojis";
+  container.style.position = "fixed";
+  container.style.left = "0";
+  container.style.top = "0";
+  container.style.width = "100%";
+  container.style.height = "100%";
+  container.style.pointerEvents = "none";
+  container.style.overflow = "visible";
+  container.style.zIndex = "50";
+  document.body.appendChild(container);
+
+  const emojis = ["💖","💞","💗","💕","🥰","😘","🌸","🌹","🎈"];
+
+  function createEmoji() {
+    const emoji = document.createElement("div");
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.position = "fixed";
+    emoji.style.left = Math.random() * 100 + "vw"; // full width random
+    emoji.style.bottom = "-40px"; // start below screen
+    emoji.style.fontSize = 22 + Math.random() * 28 + "px";
+    emoji.style.opacity = "1";
+    emoji.style.transition = "transform 3s ease-out, opacity 3s ease-out";
+    container.appendChild(emoji);
+
+    // Float up (entire screen height)
+    requestAnimationFrame(() => {
+      emoji.style.transform = `translateY(-110vh)`;
+      emoji.style.opacity = "0";
+    });
+
+    // Remove after animation
+    setTimeout(() => emoji.remove(), 6500);
+  }
+
+  // Emit emoji every 700ms
+ requestAnimationFrame(createEmoji, 700);
+});
+
+/* 🕯️ Candle blow logic */
+function blowCandle() {
+  const flame = document.getElementById("flame");
+  const smoke = document.getElementById("smoke");
+  if (!flame || !smoke) return;
+
+  // hide flame
+  flame.style.display = "none";
+  spawnConfetti();
+
+  // show smoke
+  smoke.style.display = "block";
+  smoke.style.opacity = "1";
+  smoke.innerHTML = "";
+
+  // create small smoke puffs
+  for (let i = 0; i < 200; i++) {
+    const puff = document.createElement("div");
+    puff.style.position = "absolute";
+    puff.style.left = (-5 + Math.random() * 10) + "px";
+    puff.style.bottom = "0";
+    const size = 8 + Math.random() * 10;
+    puff.style.width = `${size}px`;
+    puff.style.height = `${size}px`;
+    puff.style.borderRadius = "50%";
+    puff.style.background = "rgba(180,180,180,0.6)";
+    puff.style.animation = `smokeRise ${1.8 + Math.random()}s ease-out forwards`;
+    puff.style.animationDelay = (i * 0.1) + "s";
+    smoke.appendChild(puff);
+    setTimeout(() => puff.remove(), 2200);
+  }
+
+  // relight after 5s
+  setTimeout(() => {
+    smoke.style.opacity = "0";
+    setTimeout(() => {
+      smoke.style.display = "none";
+      flame.style.display = "block";
+    }, 800);
+  }, 5000);
+}
+
+/* 💨 Smoke animation keyframes */
+(function addSmokeKeyframes() {
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes smokeRise {
+      0% { transform: translateY(0) scale(0.6); opacity: 1; }
+      100% { transform: translateY(-90px) scale(1.6); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
+/* 🖱️ Click on page4 to blow candle */
+document.addEventListener("click", function (e) {
+  const page4 = document.getElementById("page4");
+  if (!page4 || !page4.classList.contains("active")) return;
+  if (e.target.closest(".next-btn, button, a, input, label")) return;
+  blowCandle();spawnConfetti(x, y, count)
+});
+
+/* 🏁 Initialize first page active */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  const p1 = document.getElementById("page1");
+  if (p1) p1.classList.add("active");
+});
+// 🎂 Click anywhere on Page 4 → blow candle + confetti
+document.addEventListener("click", function (e) {
+  const page4 = document.getElementById("page4");
+  if (!page4 || !page4.classList.contains("active")) return;
+
+  // Ignore clicks on buttons
+  if (e.target.closest(".next-btn, button, a, input, label")) return;
+
+  const flame = document.getElementById("flame");
+  if (!flame) return;
+
+  // If candle is burning
+  if (flame.style.opacity !== "0") {
+    // 🔥 Blow out flame
+    flame.style.transition = "opacity 0.4s ease";
+    flame.style.opacity = "0";
+
+    // 🎉 Launch confetti after 1 second delay
+    setTimeout(() => {
+      spawnConfetti();
+    }, 1000);
+  }
+});
+
+// 🎊 Confetti across full screen
+function spawnConfetti() {
+  for (let i = 0; i < 1000; i++) {  // increase number for more confetti
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+    confetti.style.position = "fixed";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.top = "-10px";
+    confetti.style.width = confetti.style.height = Math.random() * 8 + 5 + "px";
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+    confetti.style.opacity = "0.9";
+    confetti.style.zIndex = "9999";
+    confetti.style.animation = `confettiFall ${2 + Math.random() * 3}s linear forwards`;
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+  }
+}
+
+// 🎨 Confetti animation (add automatically if missing)
+(function addConfettiCSS() {
+  const style = document.createElement("style");
+  style.textContent = `
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+  .confetti {
+    border-radius: 2px;
+  }`;
+  document.head.appendChild(style);
+})();
+function nextPage(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  const el = document.getElementById(id);
+  if (el) el.classList.add("active");
+
+  if (id === "page4") {
+    addCornerBalloons();
+    enableCandleClick();
+    document.getElementById("ageCards").style.display = "flex";
+  } else {
+    const cards = document.getElementById("ageCards");
+    if (cards) cards.style.display = "none";
+  }
+}
+function nextPage(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  const el = document.getElementById(id);
+  if (el) el.classList.add("active");
+
+  // 🎀 Show the 19 hanging cards only on page4
+  const cards = document.getElementById("ageCards");
+  if (cards) {
+    cards.style.display = (id === "page4") ? "flex" : "none";
+  }
+}
+// ✨ Create red sparkles randomly across the background
+const sparkleContainer = document.getElementById("sparkle-background");
+
+for (let i = 0; i < 60; i++) {  // increase/decrease number for density
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.top = Math.random() * 100 + "vh";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDelay = Math.random() * 2 + "s";
+  sparkleContainer.appendChild(s);
+}
+
+</script>
